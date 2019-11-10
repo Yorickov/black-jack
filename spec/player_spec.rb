@@ -1,3 +1,4 @@
+require 'user'
 require 'player'
 
 describe Player do

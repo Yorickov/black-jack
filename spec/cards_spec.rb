@@ -18,7 +18,9 @@ describe Cards do
     @cards.give_two
     @cards.give_one
     expect(@cards.deck.size).to eq(49)
+  end
 
+  it 'new game' do
     @cards.prepare_deck
     expect(@cards.deck.size).to eq(52)
   end
