@@ -1,8 +1,8 @@
-require 'cards'
+require 'card_deck'
 
-describe Cards do
+describe CardDeck do
   before(:context) do
-    @cards = Cards.new
+    @cards = CardDeck.new
   end
 
   it 'creation' do

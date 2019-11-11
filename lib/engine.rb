@@ -24,7 +24,6 @@ class Engine
 
   attr_reader :curr_player_index
 
-  # TODO: add deposit changing
   def next_turn
     curr_player = players[curr_player_index]
     curr_player.make_turn
@@ -32,10 +31,10 @@ class Engine
 
     case curr_player.choice
     when 'open'
-      @status = calc_result
+      calc_result
     when 'added'
       curr_player.update_hand(cards.give_one)
-      @status = calc_result if players.all?(&:full?)
+      calc_result if players.all?(&:full?)
     end
   end
 
@@ -44,6 +43,11 @@ class Engine
     player_check = MAX_SUM - player.hand_sum
     diller_check = MAX_SUM - diller.hand_sum
 
+    calc_status(player_check, diller_check)
+    calc_deposit
+  end
+
+  def calc_status(player_check, diller_check)
     @status =
       if player_check.negative?
         1
@@ -54,5 +58,13 @@ class Engine
       else
         2
       end
+  end
+
+  def calc_deposit
+    if status == 2
+      players.each { |p| p.deposit += 10 }
+    else
+      players[status].deposit += 10
+    end
   end
 end

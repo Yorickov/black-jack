@@ -1,11 +1,11 @@
-require 'cards'
+require 'card_deck'
 require 'user'
 require 'diller'
 require 'engine'
 
 describe Engine do
   before(:context) do
-    @cards = Cards.new
+    @cards = CardDeck.new
     deck1 = []
     52.times { deck1 << ['6+', 6] }
     @cards.cards = deck1
@@ -28,9 +28,13 @@ describe Engine do
     expect(@engine.players[1].hand_sum).to eq(18)
     expect(@engine.players[0].choice).to eq('added')
     expect(@engine.players[1].choice).to eq('added')
+    expect(@engine.players[0].deposit).to eq(100)
+    expect(@engine.players[1].deposit).to eq(100)
 
     @engine.init
     expect(@engine.status).to eq(-1)
     expect(@engine.players[0].choice).to eq('skip')
+    expect(@engine.players[0].deposit).to eq(90)
+    expect(@engine.players[1].deposit).to eq(90)
   end
 end
