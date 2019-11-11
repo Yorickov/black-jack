@@ -7,7 +7,7 @@ class User
 
   def initialize(name = 'Diller')
     @name = name
-    init
+    # init
   end
 
   def update_hand(*cards)
@@ -23,14 +23,6 @@ class User
     @deposit = INIT_DEPOSIT
     @choice = 'skip'
     self
-  end
-
-  def skip_turn
-    @choice = 'skip'
-  end
-
-  def add_card
-    @choice = 'added'
   end
 
   def full?
@@ -58,5 +50,13 @@ class User
       result += added
     end
     @hand_sum = result
+  end
+
+  def skip_turn
+    @choice = 'skip'
+  end
+
+  def add_card
+    @choice = 'added'
   end
 end

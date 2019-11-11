@@ -3,7 +3,7 @@ require 'diller'
 
 describe Diller do
   before(:context) do
-    @diller = Diller.new('Dan')
+    @diller = Diller.new('Dan').init
   end
 
   it 'creation' do

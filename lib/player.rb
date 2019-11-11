@@ -19,6 +19,8 @@ class Player < User
     make_turn
   end
 
+  private
+
   def open_cards
     @choice = 'open'
   end
