@@ -2,8 +2,9 @@ require 'user'
 require 'player'
 
 describe Player do
-  it 'test' do
+  it 'player choices' do
     player = Player.new('Sam')
-    expect(player.name).to eq('Sam')
+    player.open_cards
+    expect(player.choice).to eq('open')
   end
 end

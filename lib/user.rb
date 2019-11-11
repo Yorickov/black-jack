@@ -1,5 +1,6 @@
 class User
-  attr_reader :name, :hand_sum, :deposit
+  attr_accessor :deposit
+  attr_reader :name, :hand_sum, :choice
 
   MAX_SUM = 21
   INIT_DEPOSIT = 100
@@ -20,6 +21,20 @@ class User
     @hand = []
     @hand_sum = 0
     @deposit = INIT_DEPOSIT
+    @choice = 'skip'
+    self
+  end
+
+  def skip_turn
+    @choice = 'skip'
+  end
+
+  def add_card
+    @choice = 'added'
+  end
+
+  def full?
+    hand.size == 3
   end
 
   protected
