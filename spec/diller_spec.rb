@@ -20,6 +20,7 @@ describe Diller do
 
   it 'print' do
     expect(@diller.to_s).to eq('Dan: 3+ Ace+ | 14')
+    expect(@diller.to_s_hide).to eq('Dan: * * | 14')
   end
 
   it 'state' do
