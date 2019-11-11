@@ -10,13 +10,13 @@ class Player < User
       if full?
         puts 'You can not add any card'
         make_turn
+      else
+        add_card
       end
-      add_card
     when 'o'
       open_cards
     else make_turn
     end
-    make_turn
   end
 
   private

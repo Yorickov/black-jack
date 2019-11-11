@@ -32,7 +32,7 @@ describe Engine do
   end
 
   it 'print' do
-    expected_curr = "Sam: 6+ | 18\nSarah: * | 18\n"
+    expected_curr = "Sam: 6+ | 18\nSarah: *\n"
     expect { @printer.show_current(@engine) }
       .to output(expected_curr).to_stdout
 

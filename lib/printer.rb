@@ -8,6 +8,7 @@ class Printer
 
     puts player
     puts diller.to_s_hide
+    # puts diller
   end
 
   def show_total(game)

@@ -8,7 +8,7 @@ class Diller < User
   end
 
   def to_s_hide
-    "#{name}: #{cards_to_s_hide} | #{hand_sum}"
+    "#{name}: #{cards_to_s_hide}"
   end
 
   private

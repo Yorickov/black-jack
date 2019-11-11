@@ -7,7 +7,6 @@ class User
 
   def initialize(name = 'Diller')
     @name = name
-    # init
   end
 
   def update_hand(*cards)
