@@ -6,4 +6,6 @@ class Diller < User
       add_card
     end
   end
+
+
 end

@@ -18,6 +18,10 @@ describe Diller do
     expect(@diller.deposit).to eq(90)
   end
 
+  it 'print' do
+    expect(@diller.to_s).to eq('Dan: 3+ Ace+ | 14')
+  end
+
   it 'state' do
     @diller.make_turn
     expect(@diller.choice).to eq('added')

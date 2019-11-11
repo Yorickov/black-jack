@@ -29,6 +29,10 @@ class User
     hand.size == 3
   end
 
+  def to_s
+    "#{name}: #{cards_to_s} | #{hand_sum}"
+  end
+
   protected
 
   attr_reader :hand
@@ -58,5 +62,9 @@ class User
 
   def add_card
     @choice = 'added'
+  end
+
+  def cards_to_s
+    hand.to_h.keys.join(' ')
   end
 end
