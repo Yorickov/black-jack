@@ -1,4 +1,5 @@
 require 'user'
+require 'validation'
 require 'player'
 
 describe Player do

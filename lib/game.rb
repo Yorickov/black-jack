@@ -1,18 +1,17 @@
 class Game
-  attr_reader :name
+  attr_reader :player
 
   def initialize
-    @name = create_name
-    @engine = create_engine(@name)
+    @player = create_player
+    @engine = create_engine
     @printer = Printer.new
-    @bank = Bank.new
   end
 
   def start
     flow
     printer.show_total(engine)
 
-    puts "#{name}, nput Y to play again or any key to exit"
+    puts "#{player.name}, nput Y to play again or any key to exit"
 
     choice = gets.chomp.strip.downcase
     return unless choice == 'y'
@@ -30,18 +29,19 @@ class Game
 
   attr_reader :engine, :printer
 
-  def create_name
+  def create_player
     puts 'Input your name'
 
     name = gets.chomp.strip
-    create_name if name == ''
-    name
+    Player.new(name)
+  rescue ArgumentError => e
+    puts e.message
+    retry
   end
 
-  def create_engine(name)
+  def create_engine
     cards = CardDeck.new
     diller = Diller.new
-    player = Player.new(name)
     bank = Bank.new
     Engine.new(cards, bank, player, diller)
   end

@@ -40,7 +40,7 @@ class User
 
     unless ace_content.size.positive?
       @hand_sum = result
-      return result
+      return
     end
 
     while ace_content.size.positive?

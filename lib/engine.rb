@@ -66,7 +66,6 @@ class Engine
       end
   end
 
-  # TODO: Bank?
   def calc_deposit
     if status == 2
       players.each { |p| bank.withdraw(p) }
