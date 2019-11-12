@@ -30,6 +30,6 @@ describe Bank do
   it 'error' do
     @player.balance = 0
     expect { @bank.deposit(@player) }
-      .to raise_error('Sorry, Dan, you are bankrot')
+      .to raise_error('Game over for Dan, he is bankrot')
   end
 end

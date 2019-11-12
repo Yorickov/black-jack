@@ -2,8 +2,8 @@ class CardDeck
   attr_accessor :cards
   attr_reader :deck
 
-  def initialize
-    @cards = create_cards
+  def initialize(cards = nil)
+    @cards = cards || create_cards
   end
 
   def prepare_deck

@@ -5,6 +5,7 @@ require_relative 'lib/player'
 require_relative 'lib/engine'
 require_relative 'lib/printer'
 require_relative 'lib/game'
+require_relative 'lib/bank'
 
 game = Game.new
 game.start

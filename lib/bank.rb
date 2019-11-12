@@ -6,7 +6,7 @@ class Bank
   end
 
   def deposit(player)
-    raise "Sorry, #{player.name}, you are bankrot" if player.balance < 10
+    raise "Game over for #{player.name}, he is bankrot" if player.balance < 10
 
     player.balance -= 10
     @desk += 10

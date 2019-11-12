@@ -5,6 +5,7 @@ class Game
     @name = create_name
     @engine = create_engine(@name)
     @printer = Printer.new
+    @bank = Bank.new
   end
 
   def start
@@ -36,7 +37,8 @@ class Game
     cards = CardDeck.new
     diller = Diller.new
     player = Player.new(name)
-    Engine.new(cards, player, diller)
+    bank = Bank.new
+    Engine.new(cards, bank, player, diller)
   end
 
   def flow

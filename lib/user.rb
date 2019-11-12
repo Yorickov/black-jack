@@ -7,10 +7,11 @@ class User
 
   def initialize(name = 'Diller')
     @name = name
+    @balance = INIT_BALANCE
   end
 
   def update_hand(*cards)
-    @balance -= 10 if cards.size > 1
+    # @balance -= 10 if cards.size > 1
 
     hand.push(*cards)
     calc_hand
@@ -19,7 +20,6 @@ class User
   def init
     @hand = []
     @hand_sum = 0
-    @balance = INIT_BALANCE
     @choice = 'skip'
     self
   end

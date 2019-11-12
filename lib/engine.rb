@@ -1,11 +1,12 @@
 class Engine
-  attr_reader :cards, :players, :status
+  attr_reader :cards, :players, :status, :bank
 
   MAX_SUM = 21
 
-  def initialize(cards, player, diller)
+  def initialize(cards, bank, player, diller)
     @players = [player, diller]
     @cards = cards
+    @bank = bank
     init
   end
 
@@ -13,7 +14,12 @@ class Engine
     cards.prepare_deck
     @status = -1 # 0 player win, 1 - diller win, 2 - nobody
     @curr_player_index = 0
-    players.each { |p| p.init.update_hand(*cards.give_two) }
+
+    players.each do |p|
+      p.init
+      bank.deposit(p)
+      p.update_hand(*cards.give_two)
+    end
   end
 
   def process
@@ -63,9 +69,9 @@ class Engine
   # TODO: Bank?
   def calc_deposit
     if status == 2
-      players.each { |p| p.balance += 10 }
+      players.each { |p| bank.withdraw(p) }
     else
-      players[status].balance += 20
+      bank.take_all(players[status])
     end
   end
 end

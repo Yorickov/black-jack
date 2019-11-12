@@ -3,6 +3,7 @@ require 'user'
 require 'diller'
 require 'engine'
 require 'printer'
+require 'bank'
 
 describe Engine do
   before(:context) do
@@ -13,7 +14,8 @@ describe Engine do
 
     @diller1 = Diller.new('Sam')
     @diller2 = Diller.new('Sarah')
-    @engine = Engine.new(@cards, @diller1, @diller2)
+    @bank = Bank.new
+    @engine = Engine.new(@cards, @bank, @diller1, @diller2)
     @printer = Printer.new
   end
 

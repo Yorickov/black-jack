@@ -15,7 +15,6 @@ describe Diller do
   it 'update hand' do
     @diller.update_hand(['3+', 3], ['Ace+', [1, 11]])
     expect(@diller.hand_sum).to eq(14)
-    expect(@diller.balance).to eq(90)
   end
 
   it 'print' do
