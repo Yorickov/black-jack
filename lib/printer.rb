@@ -7,8 +7,7 @@ class Printer
     player, diller = game.players
 
     puts player
-    puts diller.to_s_hide
-    # puts diller
+    puts diller.to_s_hide # TEST: puts diller
   end
 
   def show_total(game)

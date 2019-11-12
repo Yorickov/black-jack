@@ -17,7 +17,12 @@ class Game
     choice = gets.chomp.strip.downcase
     return unless choice == 'y'
 
-    engine.init
+    begin
+      engine.init
+    rescue => e
+      puts e.message
+      return
+    end
     start
   end
 

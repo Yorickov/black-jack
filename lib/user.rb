@@ -3,7 +3,7 @@ class User
   attr_reader :name, :hand_sum, :choice
 
   MAX_SUM = 21
-  INIT_BALANCE = 100
+  INIT_BALANCE = 100 # TEST: 20
 
   def initialize(name = 'Diller')
     @name = name
@@ -11,8 +11,6 @@ class User
   end
 
   def update_hand(*cards)
-    # @balance -= 10 if cards.size > 1
-
     hand.push(*cards)
     calc_hand
   end
@@ -29,7 +27,7 @@ class User
   end
 
   def to_s
-    "#{name}: #{cards_to_s} | #{hand_sum}"
+    "#{name}: #{cards_to_s} | #{hand_sum} | balance: #{balance}"
   end
 
   protected
