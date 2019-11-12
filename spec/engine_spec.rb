@@ -28,7 +28,7 @@ describe Engine do
     expect(@engine.status).to eq(2)
     expect(@engine.players.all? { |p| p.hand_sum == 18 }).to be_truthy
     expect(@engine.players.all? { |p| p.choice == 'added' }).to be_truthy
-    expect(@engine.players.all? { |p| p.deposit == 100 }).to be_truthy
+    expect(@engine.players.all? { |p| p.balance == 100 }).to be_truthy
   end
 
   it 'print' do
@@ -45,6 +45,6 @@ describe Engine do
     @engine.init
     expect(@engine.status).to eq(-1)
     expect(@engine.players.all? { |p| p.choice == 'skip' }).to be_truthy
-    expect(@engine.players.all? { |p| p.deposit == 90 }).to be_truthy
+    expect(@engine.players.all? { |p| p.balance == 90 }).to be_truthy
   end
 end

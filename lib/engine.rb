@@ -63,9 +63,9 @@ class Engine
   # TODO: Bank?
   def calc_deposit
     if status == 2
-      players.each { |p| p.deposit += 10 }
+      players.each { |p| p.balance += 10 }
     else
-      players[status].deposit += 20
+      players[status].balance += 20
     end
   end
 end

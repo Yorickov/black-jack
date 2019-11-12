@@ -1,16 +1,16 @@
 class User
-  attr_accessor :deposit
+  attr_accessor :balance
   attr_reader :name, :hand_sum, :choice
 
   MAX_SUM = 21
-  INIT_DEPOSIT = 100
+  INIT_BALANCE = 100
 
   def initialize(name = 'Diller')
     @name = name
   end
 
   def update_hand(*cards)
-    @deposit -= 10 if cards.size > 1
+    @balance -= 10 if cards.size > 1
 
     hand.push(*cards)
     calc_hand
@@ -19,7 +19,7 @@ class User
   def init
     @hand = []
     @hand_sum = 0
-    @deposit = INIT_DEPOSIT
+    @balance = INIT_BALANCE
     @choice = 'skip'
     self
   end
