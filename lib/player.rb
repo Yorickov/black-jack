@@ -9,4 +9,8 @@ class Player < User
     super(*args)
     validate!
   end
+
+  def choices
+    full? ? %i[skip open] : %i[skip open add]
+  end
 end

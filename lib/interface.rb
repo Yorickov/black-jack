@@ -45,18 +45,15 @@ module Interface
     curr_player = engine.players[engine.curr_player_index]
     return if curr_player.class == Diller
 
-    puts 'input M to miss turn, A to add card or O to open cards'
+    puts 'input index of choices'
+    curr_player.choices.each.with_index(1) { |it, ix| puts "\t#{ix}. #{it}" }
 
     choice = ''
-    until %w[m a o].include?(choice)
-      choice = gets.chomp.strip.downcase
-      if choice == 'a' && curr_player.full?
-        puts 'You can not add any card'
-        choice = ''
-      end
+    until (1..curr_player.choices.size).include?(choice)
+      choice = gets.chomp.to_i
     end
 
-    choice
+    curr_player.choices[choice - 1]
   end
 
   def game_over_message(name)

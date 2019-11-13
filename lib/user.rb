@@ -36,9 +36,9 @@ class User
     end
 
     case choice
-    when 'm' then skip_turn
-    when 'a' then add_card
-    when 'o' then open_cards
+    when :skip then skip_turn
+    when :add then add_card
+    when :open then open_cards
     end
   end
 
