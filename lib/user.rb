@@ -59,7 +59,7 @@ class User
       _key, value = ace_content.pop
       value1, value11 = value
 
-      added = (value11 + result) < MAX_SUM ? value11 : value1
+      added = (value11 + result) <= MAX_SUM ? value11 : value1
       result += added
     end
 
