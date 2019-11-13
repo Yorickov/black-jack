@@ -1,4 +1,7 @@
 class Game
+  BET = 10
+  INITIAL_PLAYER_BALANCE = 100
+
   attr_reader :player
 
   def initialize
@@ -18,7 +21,7 @@ class Game
 
     begin
       engine.init
-    rescue => e
+    rescue RuntimeError => e
       puts e.message
       return
     end
@@ -33,7 +36,7 @@ class Game
     puts 'Input your name'
 
     name = gets.chomp.strip
-    Player.new(name)
+    Player.new(INITIAL_PLAYER_BALANCE, name)
   rescue ArgumentError => e
     puts e.message
     retry
@@ -41,8 +44,8 @@ class Game
 
   def create_engine
     cards = CardDeck.new
-    diller = Diller.new
-    bank = Bank.new
+    diller = Diller.new(INITIAL_PLAYER_BALANCE)
+    bank = Bank.new(BET)
     Engine.new(cards, bank, player, diller)
   end
 

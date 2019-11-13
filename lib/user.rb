@@ -3,11 +3,10 @@ class User
   attr_reader :name, :hand_sum, :choice
 
   MAX_SUM = 21
-  INIT_BALANCE = 100 # TEST: 20
 
-  def initialize(name = 'Diller')
+  def initialize(balance, name = 'Diller')
     @name = name
-    @balance = INIT_BALANCE
+    @balance = balance
   end
 
   def update_hand(*cards)

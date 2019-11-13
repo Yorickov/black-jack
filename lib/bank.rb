@@ -1,20 +1,19 @@
 class Bank
-  attr_accessor :desk
+  attr_accessor :desk, :bet
 
-  def initialize
+  def initialize(bet)
     @desk = 0
+    @bet = bet
   end
 
   def deposit(player)
-    raise "Game over for #{player.name}, he is bankrot" if player.balance < 10
-
-    player.balance -= 10
-    @desk += 10
+    player.balance -= bet
+    @desk += bet
   end
 
   def withdraw(player)
-    player.balance += 10
-    @desk -= 10
+    player.balance += bet
+    @desk -= bet
   end
 
   def take_all(player)

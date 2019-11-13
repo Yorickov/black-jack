@@ -3,12 +3,12 @@ require 'diller'
 
 describe Diller do
   before(:context) do
-    @diller = Diller.new('Dan').init
+    @diller = Diller.new(100, 'Dan').init
   end
 
   it 'creation' do
     expect(@diller.name).to eq('Dan')
-    expect(Diller.new.name).to eq('Diller')
+    expect(Diller.new(100).name).to eq('Diller')
     expect(@diller.choice).to eq('skip')
   end
 

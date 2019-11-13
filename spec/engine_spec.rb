@@ -12,9 +12,9 @@ describe Engine do
     52.times { deck1 << ['6+', 6] }
     @cards.cards = deck1
 
-    @diller1 = Diller.new('Sam')
-    @diller2 = Diller.new('Sarah')
-    @bank = Bank.new
+    @diller1 = Diller.new(100, 'Sam')
+    @diller2 = Diller.new(100, 'Sarah')
+    @bank = Bank.new(10)
     @engine = Engine.new(@cards, @bank, @diller1, @diller2)
     @printer = Printer.new
   end
