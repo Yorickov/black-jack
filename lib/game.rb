@@ -14,12 +14,10 @@ class Game
 
     flow
     Interface.show_total(engine)
+    return Interface.game_over_message(engine.bankrupt.name) if engine.bankrupt
 
     choice = Interface.ask_one_more?
     return Interface.goodbye_message(engine) unless choice
-    return Interface.game_over_message(engine.bankrut.name) if engine.bankrupt
-
-    Interface.new_round
 
     engine.init
     controller

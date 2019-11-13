@@ -2,8 +2,8 @@ require 'card_deck'
 require 'user'
 require 'diller'
 require 'engine'
-require 'printer'
 require 'bank'
+require 'interface'
 
 describe Engine do
   before(:context) do
@@ -16,7 +16,6 @@ describe Engine do
     @diller2 = Diller.new(100, 'Sarah')
     @bank = Bank.new(10)
     @engine = Engine.new(@cards, @bank, @diller1, @diller2)
-    @printer = Printer.new
   end
 
   it 'creation' do
@@ -25,8 +24,8 @@ describe Engine do
   end
 
   it 'process' do
-    @engine.process
-    @engine.process
+    @engine.next_turn(nil)
+    @engine.next_turn(nil)
     expect(@engine.status).to eq(2)
     expect(@engine.players.all? { |p| p.hand_sum == 18 }).to be_truthy
     expect(@engine.players.all? { |p| p.choice == 'added' }).to be_truthy
@@ -35,12 +34,12 @@ describe Engine do
 
   it 'print' do
     expected_curr = "Sam: 6+ | 18 | balance: 100\nSarah: *\n"
-    expect { @printer.show_current(@engine) }
+    expect { Interface.show_current(@engine) }
       .to output(expected_curr).to_stdout
 
     expected_tot = "The winner is Nobody\nSam: 6+ | 18 | balance: 100\n" \
       "Sarah: 6+ | 18 | balance: 100\n"
-    expect { @printer.show_total(@engine) }
+    expect { Interface.show_total(@engine) }
       .to output(expected_tot).to_stdout
   end
 

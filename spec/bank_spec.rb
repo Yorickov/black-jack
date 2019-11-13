@@ -27,10 +27,4 @@ describe Bank do
     expect(@bank.desk).to eq(0)
     expect(@player.balance).to eq(130)
   end
-
-  # it 'error' do
-  #   @player.balance = 0
-  #   expect { @bank.deposit(@player) }
-  #     .to raise_error('Game over for Dan, he is bankrot')
-  # end
 end

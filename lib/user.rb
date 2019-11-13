@@ -62,6 +62,7 @@ class User
       added = (value11 + result) < MAX_SUM ? value11 : value1
       result += added
     end
+
     @hand_sum = result
   end
 

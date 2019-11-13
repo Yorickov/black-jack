@@ -10,8 +10,7 @@ module Interface
   def show_current(engine)
     player, diller = engine.players
     puts player
-    # puts diller.to_s_hide
-    puts diller # TEST: puts diller
+    puts diller.to_s_hide
   end
 
   def show_total(engine)
@@ -56,11 +55,8 @@ module Interface
         choice = ''
       end
     end
-    choice
-  end
 
-  def new_round
-    puts 'New round'
+    choice
   end
 
   def game_over_message(name)
