@@ -29,6 +29,19 @@ class User
     "#{name}: #{cards_to_s} | #{hand_sum} | balance: #{balance}"
   end
 
+  def make_turn(choice = nil)
+    unless choice
+      (hand_sum >= 17) || full? ? skip_turn : add_card
+      return
+    end
+
+    case choice
+    when 'm' then skip_turn
+    when 'a' then add_card
+    when 'o' then open_cards
+    end
+  end
+
   protected
 
   attr_reader :hand
@@ -58,6 +71,10 @@ class User
 
   def add_card
     @choice = 'added'
+  end
+
+  def open_cards
+    @choice = 'open'
   end
 
   def cards_to_s

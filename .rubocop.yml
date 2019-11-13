@@ -22,6 +22,9 @@ Style/ClassVars:
 Metrics/AbcSize:
   Enabled: false
 
+Metrics/CyclomaticComplexity:
+  Max: 10
+
 # standart: 10
 Metrics/MethodLength:
-  Max: 16
+  Max: 20

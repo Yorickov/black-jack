@@ -7,38 +7,34 @@ class Game
   def initialize
     @player = create_player
     @engine = create_engine
-    @printer = Printer.new
   end
 
-  def start
+  def controller
+    Interface.welcome_message
+
     flow
-    printer.show_total(engine)
+    Interface.show_total(engine)
 
-    puts "#{player.name}, nput Y to play again or any key to exit"
+    choice = Interface.ask_one_more?
+    return Interface.goodbye_message(engine) unless choice
+    return Interface.game_over_message(engine.bankrut.name) if engine.bankrupt
 
-    choice = gets.chomp.strip.downcase
-    return unless choice == 'y'
+    Interface.new_round
 
-    begin
-      engine.init
-    rescue RuntimeError => e
-      puts e.message
-      return
-    end
-    start
+    engine.init
+    controller
   end
 
   private
 
-  attr_reader :engine, :printer
+  attr_reader :engine
 
   def create_player
-    puts 'Input your name'
+    name = Interface.ask_player_name
 
-    name = gets.chomp.strip
     Player.new(INITIAL_PLAYER_BALANCE, name)
   rescue ArgumentError => e
-    puts e.message
+    Interface.error_message(e)
     retry
   end
 
@@ -52,8 +48,9 @@ class Game
   def flow
     return unless engine.status == -1
 
-    printer.show_current(engine)
-    engine.process
+    Interface.show_current(engine)
+    decision = Interface.ask_player_decision(engine)
+    engine.next_turn(decision)
     flow
   end
 end
